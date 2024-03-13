@@ -11,6 +11,8 @@ app.set('view engine', 'ejs');
 //ahora seteo de carptea public
 app.use(express.static('/public'))
 
+app.use(express.static('/public', { 'Content-Type': 'text/css' }))
+
 //pa que procede datos
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
