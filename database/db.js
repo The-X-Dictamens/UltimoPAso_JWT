@@ -6,16 +6,16 @@ const conexion = mysql.createConnection({
 
     user: process.env.DB_USER,
 
-    password: process.env.DB_PASS,
+    password: process.env.DB_PASSw,
 
     database: process.env.DB_DATABASE,
     
 
 })
 
-conexion.connect((error) => {
+conexion.connect( (error) => {
     if (error) {
-        console.log('EL error esta al nacer: ' + error)
+        console.log('EL error esta al nacer porque: ' + error)
         return
 
     }
@@ -56,3 +56,26 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
  */
+
+/**
+ * Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 31
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> ALTER USER 'root'@'localhost'
+    -> IDENTIFIED WITH mysql_native_password BY 'your_new_password';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
+
+ */
+
