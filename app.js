@@ -30,5 +30,5 @@ app.use('/', require('./routes/router'))
     //res.send('gelouda ')
 //}) nos manejaremos desde el router
 app.listen(3000, () => {
-    console.log('Hola niger')
+    console.log('Hola nigeriano')
 })
