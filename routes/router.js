@@ -7,7 +7,7 @@ const router = express.Router()
 const conexion = require('../database/db')
 
 router.get('/', (req, res) => {
-    conexion()
+    //conexion()
     res.render('index')
 })
 

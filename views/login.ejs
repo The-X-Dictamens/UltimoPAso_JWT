@@ -11,32 +11,15 @@
     <meta name="generator" content="Hugo 0.84.0" />
     <title>Inicio Sesion Cuidamor</title>
 
-   
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
   </head>
   <body class="text-center">
-    <main class="form-signin">
+    <main class="form-signin text-center shawow-lg mn-5">
       <form id="formLogin" action="/login" method="post">
         <img class="mb-4" src="img/miama.png" alt="" width="72" height="57" />
         <h1 class="h3 mb-3 fw-normal">Inicio De Sesion</h1>
@@ -56,17 +39,18 @@
             type="password"
             class="form-control"
             id="pass"
-            placeholder="pass"
+            placeholder="INgresa tu contrasena"
           />
           <label for="floatingPassword">los 16 NUmeros de tu tarjeta </label>
         </div>
 
         <div class="checkbox mb-3"></div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
-          Sign in
+        <button class="w-100 btn btn-lg bt-bd-primary" type="submit">
+          Iniciar Sesion
         </button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
       </form>
+      <br />
+      <a type="button" class="w-100 btn btn-lg bt-primary">Crear Cuenta</a>
     </main>
   </body>
 </html>
