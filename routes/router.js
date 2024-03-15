@@ -7,6 +7,7 @@ const router = express.Router()
 const conexion = require('../database/db')
 
 
+
 //1.R
 const authController = require('../controllers/authController')
 
