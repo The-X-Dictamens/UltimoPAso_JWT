@@ -14,8 +14,7 @@ exports.register = async (req, res) => {
 
     const name = req.body.name
     const user = req.body.user
-    const nombre = req.body.Users
     const pass = req.body.pass
     //pero esto tenemos que especificarlo en nueestro enrutador
-    console.log(name + ' - ' + user +' - '+nombre+ ' - '+ pass)
+    console.log(name + ' - ' + user +' - '+ ' - '+ pass)
 }
