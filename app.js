@@ -8,10 +8,9 @@ const app = express()
 //seteado de motoro de poatnillas
 app.set('view engine', 'ejs');
 
-//ahora seteo de carptea public
-app.use(express.static('/public'))
+//seteamos la carpeta public para archivos estáticos
 
-app.use(express.static('/public', { 'Content-Type': 'text/css' }))
+app.use(express.static('public'));
 
 //pa que procede datos
 app.use(express.urlencoded({ extended: true }))
