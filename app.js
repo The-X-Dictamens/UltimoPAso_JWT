@@ -21,7 +21,7 @@ app.use(express.json())
 dotenv.config({ path: './env/.env' })
 
 //setep de ;as galletitas
-app.use(cookieParser)
+//app.use(cookieParser)
 
 
 //llamar al router
