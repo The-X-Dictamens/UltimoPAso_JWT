@@ -50,7 +50,26 @@
         </button>
       </form>
       <br />
-      <a type="button" class="w-100 btn btn-lg bt-primary">Crear Cuenta</a>
+      <a href="/register" type="button" class="w-100 btn btn-lg bt-primary"
+        >Crear Cuenta</a
+      >
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: "<% = alertTitle",
+        text: "<% = alertMessage",
+        icon: "<% = alertIcon",
+        showConfirmButton: "<% = alertTitle",
+        timer: "<% = timer",
+      }).then(() => {
+        window.location = "/<%= ruta%> ";
+      });
+    </script>
+
+    <% }%>
   </body>
 </html>
