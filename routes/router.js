@@ -34,5 +34,7 @@ router.get('/register', (req, res) => {
 //hay que fijarnos en el formulario que metodo pusimos
 router.post('/register', authController.register)
 
+router.post('/login', authController.login)
+
 
 module.exports = router

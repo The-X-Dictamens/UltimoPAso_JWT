@@ -34,3 +34,16 @@ exports.register = async (req, res) => {
 
     //ahora creamos la sentencia sql para insertar los datos
 }
+
+//cierren los ojos que se viene el inicio de sesion
+
+exports.login = async (req, res) => {
+    try {
+        const user = req.body.user
+        const pass = req.body.passw
+
+        console.log(pass)
+    } catch (error) {
+        console.log(error)
+    }
+}
