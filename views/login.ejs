@@ -60,13 +60,13 @@
     <% if(alert) { %>
     <script>
       Swal.fire({
-        title: "<% = alertTitle %>"  ,
-        text: "<% = alertMessage %>" ,
-        icon: "<% = alertIcon %>" ,
-        showConfirmButton: "<% = alertTitle %>",
-        timer: "<% = timer %>",
+        title: '<% = alertTitle %>'  ,
+        text: '<% = alertMessage %>' ,
+        icon: '<% = alertIcon %>' ,
+        showConfirmButton: <% = showConfirmButton %>,
+        timer: <% = timer %>,
       }).then(() => {
-        window.location = "/<%= ruta %> ";
+        window.location = '/<%= ruta %> ';
       });
     </script>
 

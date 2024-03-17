@@ -33,7 +33,7 @@ app.use('/', require('./routes/router'))
 
 
 app.listen(3000, () => {
-    console.log('Hola nigeriano')
+    console.log('Hola niriano')
     console.log('server running en http://localhost:3000' )
 
 })

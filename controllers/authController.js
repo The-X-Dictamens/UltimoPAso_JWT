@@ -47,7 +47,7 @@ exports.login = async (req, res) => {
             res.render('login', {
                 alert: true,
                 alertTitle: "Advertencia",
-                alertMessage: "Ingresa algo o se te metera el pene",
+                alertMessage: "Ingresa algo o se te metera ",
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
@@ -56,18 +56,18 @@ exports.login = async (req, res) => {
         } else {
             conexion.query('SELECT * FROM users WHERE  user = ?', [user], async (error, results) => {
                 
-                if (results.length == 0 || !(await bcrypt.compare(pass, results[0].pass))) {
+                if (results.length == 0 || ! ( await bcrypt.compare(pass, results[0].pass))) {
                     res.render('login', {
                         alert: true,
-                        alertTitle: "Advertencia",
-                        alertMessage: "ACuerdate de tu pass o se metera el pene",
-                        alertIcon: 'info',
+                        alertTitle: "Error",
+                        alertMessage: "ACuerdate de tu pass o se metera ",
+                        alertIcon: 'error',
                         showConfirmButton: true,
                         timer: false,
                         ruta: 'login'
                     })
                     
-                } else {
+                } else {//si esta ttodo bien ya esta pos validado
                     //hijo de su pinche madre, no cerraste la boca y ya sae te vino el jason       WT
                     const id = results[0].id
                     //ocupamos nuestra clave secreta para el cifradito
@@ -75,7 +75,7 @@ exports.login = async (req, res) => {
                         expiresIn: process.env.JWT_TIEMPO_EXPIRA
                     })
                     
-                    console.log("CODIGOS NUCLEARES " + token + " para bombardear a " + user)
+                    console.log("CODIGOS NUCLES " + token + " para  a " + user)
                     
                     //ahora configuremos nuestra galletita de mota
 
@@ -87,8 +87,8 @@ exports.login = async (req, res) => {
                     res.cookie('jwt', token, cookieOptions)
                     res.render('login', {
                         alert: true,
-                        alertTitle: "COck Nectado",
-                        alertMessage: "Ya no se metera el pene",
+                        alertTitle: " Nectado",
+                        alertMessage: "Ya no se metera ",
                         alertIcon: 'aucces',
                         showConfirmButton: false,
                         timer: 800,
