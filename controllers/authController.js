@@ -95,3 +95,29 @@ exports.login = async (req, res)=>{
         console.log('ultiomo catch'+error)
     }
 }
+
+//metodo para saber si el usuario es negro o no
+
+exports.isAuthenticated = async (req, res, next) => {
+    if (req.cookiesOptions.jwt) {
+        try {
+            //primero verificamos si el token  bufa(es verdadero)
+            const decodificada = await promisify(jwt.verify)(req.cookiesOptions.jwt, promisify.JWT_SECRETO)
+            //ahora checamos si si esta en la bd
+            conexion.query('SELECT * FROM users WHERE id = ?', [decodificada.id], (error, results) => {
+                if (!results) { return next() }
+                req.user = results[0]
+                return next()
+            })
+        } catch (error) {
+            //y pyes si no de nuevo al loby
+            
+            console.log('tercercatch'+error)
+        }
+    } else {
+        res.redirect('/login')
+        next()
+        
+    }
+    //y esta verificacion la haremos en nuestras rutas del router
+}

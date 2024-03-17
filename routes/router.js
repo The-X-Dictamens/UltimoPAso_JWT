@@ -12,7 +12,7 @@ const conexion = require('../database/db')
 const authController = require('../controllers/authController')
 
 //esto e spa las vistar
-router.get('/', (req, res) => {
+router.get('/', authController.isAuthenticated , (req, res) => {
     //conexion()
     res.render('index')
 })
