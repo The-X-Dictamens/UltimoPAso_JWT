@@ -16,8 +16,8 @@ exports.register = async (req, res) => {
 
     try {
         const name = req.body.name
-    const user = req.body.user
-    const pass = req.body.pass
+        const user = req.body.user
+        const pass = req.body.pass
     //pero esto tenemos que especificarlo en nueestro enrutador
     let passHast = await bcrypt.hash(pass, 8)
 
