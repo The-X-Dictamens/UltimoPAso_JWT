@@ -1,41 +1,24 @@
 const jwt = require('jsonwebtoken')
-
-const bcrypt = require('bcryptjs')
-
+const bcryptjs = require('bcryptjs')
 const conexion = require('../database/db')
+const {promisify} = require('util')
 
-const { promisify } = require('util')
-const { use } = require('../routes/router')
-const { error } = require('console')
-
-//PRocedimiento parea hacer la registracion
-
-exports.register = async (req, res) => {
-    //con esto llamaremos a los muchachines
-
-
+//procedimiento para registrarnos
+exports.register = async (req, res)=>{    
     try {
         const name = req.body.name
         const user = req.body.user
         const pass = req.body.pass
-    //pero esto tenemos que especificarlo en nueestro enrutador
-    let passHast = await bcrypt.hash(pass, 8)
-
-        conexion.query('INSERT INTO Users SET ?', { user: user, name: name, pass: passHast }, (error, results) => {
-            if (error) { console.log(error) }
+        let passHash = await bcryptjs.hash(pass, 8)    
+        //console.log(passHash)   
+        conexion.query('INSERT INTO users SET ?', {user:user, name: name, pass:passHash}, (error, results)=>{
+            if(error){console.log(error)}
             res.redirect('/')
         })
     } catch (error) {
-        console.log('primer catch'+error)
-
-    }
-
-    
-
-    //ahora creamos la sentencia sql para insertar los datos
+        console.log(error)
+    }       
 }
-
-//cierren los ojos que se viene el inicio de sesion
 
 exports.login = async (req, res)=>{
     try {
@@ -54,7 +37,7 @@ exports.login = async (req, res)=>{
             })
         }else{
             conexion.query('SELECT * FROM users WHERE user = ?', [user], async (error, results)=>{
-                if( results.length == 0 || ! (await bcrypt.compare(pass, results[0].pass)) ){
+                if( results.length == 0 || ! (await bcryptjs.compare(pass, results[0].pass)) ){
                     res.render('login', {
                         alert: true,
                         alertTitle: "Error",
@@ -92,38 +75,29 @@ exports.login = async (req, res)=>{
             })
         }
     } catch (error) {
-        console.log('ultiomo catch'+error)
+        console.log(error)
     }
 }
 
-//metodo para saber si el usuario es negro o no
-
-exports.isAuthenticated = async (req, res, next) => {
+exports.isAuthenticated = async (req, res, next)=>{
     if (req.cookies.jwt) {
         try {
-            //primero verificamos si el token  bufa(es verdadero)
-            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, promisify.JWT_SECRETO)
-            //ahora checamos si si esta en la bd
-            conexion.query('SELECT * FROM users WHERE id = ?', [decodificada.id], (error, results) => {
-                if (!results) { return next() }
+            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+            conexion.query('SELECT * FROM users WHERE id = ?', [decodificada.id], (error, results)=>{
+                if(!results){return next()}
                 req.user = results[0]
                 return next()
             })
         } catch (error) {
-            //y pyes si no de nuevo al loby
-            
-            console.log('tercercatch'+error)
+            console.log(error)
+            return next()
         }
-    } else {
-        res.redirect('/login')
-        
+    }else{
+        res.redirect('/login')        
     }
-    //y esta verificacion la haremos en nuestras rutas del router
 }
 
-//ahora el last para el log out
-
-exports.logout = (req, res) => {
-    res.clearCookie('jwt')
-    return  res.redirect('/')
+exports.logout = (req, res)=>{
+    res.clearCookie('jwt')   
+    return res.redirect('/')
 }

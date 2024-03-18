@@ -59,7 +59,7 @@
       />
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="#">Sign out</a>
+          <a class="nav-link px-3" href="logout">Sign out</a>
         </div>
       </div>
     </header>
@@ -148,16 +148,14 @@
         </nav>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
-            <h1 class="h2" style="margin-left: 40vh">Dashboard</h1>
-
-            <h1 class="h2" style="margin-left: 40vh">
-              Dashboard <% if (user) {%> <=% user.name %>
-                 <% } %>
-            </h1>
-          </div>
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2>Dashboard</h2>
+            <h2>Bienvenido:
+              <% if (user) { %>
+                <span class="badge bg-success"><%= user.name %></span>
+              <% } %>
+            </h2>
+          </div> 
 
           <h2>Section title</h2>
         </main>
