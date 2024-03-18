@@ -116,7 +116,6 @@ exports.isAuthenticated = async (req, res, next) => {
         }
     } else {
         res.redirect('/login')
-        next()
         
     }
     //y esta verificacion la haremos en nuestras rutas del router

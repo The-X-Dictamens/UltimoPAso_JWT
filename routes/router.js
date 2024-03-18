@@ -14,7 +14,7 @@ const authController = require('../controllers/authController')
 //esto e spa las vistar
 router.get('/', authController.isAuthenticated , (req, res) => {
     //conexion()
-    res.render('index')
+    res.render('index' ,{user:req.user})
 })
 
 
@@ -37,7 +37,7 @@ router.post('/register', authController.register)
 router.post('/login', authController.login)
 //verbo hhtp get
 
-router.post('/logout', authController.logout)
+router.get('/logout', authController.logout)
 
 
 
