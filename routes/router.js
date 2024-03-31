@@ -7,7 +7,7 @@ const authController = require('../controllers/authController')
 router.get('/', authController.isAuthenticated, (req, res)=>{    
     res.render('index', {user:req.user})
 })
-router.get('/login', (req, res)=>{
+router.get('/logins', (req, res)=>{
     res.render('login', {alert:false})
 })
 router.get('/register', (req, res)=>{
